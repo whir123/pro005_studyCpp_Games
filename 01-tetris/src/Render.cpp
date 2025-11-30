@@ -14,10 +14,10 @@ void render(const Board& board, const Game& game) {
     // clearScreen();
     std::cout << "\033[2J\033[1;1H";
 
-    const int (*grid)[Board::WIDTH] = board.getGrid();
-    const int (*shape)[4] = game.getPiece().getShape(game.getRotation());
-    int px = game.getX();
-    int py = game.getY();
+    const int (*grid)[Board::WIDTH] = board.getGrid(); // 获取棋盘状态
+    const int (*shape)[4] = game.getPiece().getShape(game.getRotation()); // 获取当前方块形状
+    int px = game.getX(); // 当前方块X坐标
+    int py = game.getY(); // 当前方块Y坐标
 
     for (int y = 0; y < Board::HEIGHT; y++) {
         for (int x = 0; x < Board::WIDTH; x++) {

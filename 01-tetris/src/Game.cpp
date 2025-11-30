@@ -2,6 +2,12 @@
 
 #include "Game.h"
 #include <cstdlib>
+// 方块生命周期：
+// 生成 → 移动/旋转 → 固定 → 消除 → 生成新方块
+
+// ⚠️
+// 能下落 → 继续下落
+// 不能下落 → 固定当前方块 → 消除满行 → 生成新方块
 
 Game::Game(Board& b) : board(b) {}
 
@@ -19,7 +25,7 @@ bool Game::canMove(int nx, int ny, int nrot) {
         for (int c = 0; c < 4; c++)
             if (shape[r][c] == 1)
                 if (board.isOccupied(nx + c, ny + r))
-                    return false;
+                    return false; // ⚠️ 碰撞发生，不能移动
     return true;
 }
 
