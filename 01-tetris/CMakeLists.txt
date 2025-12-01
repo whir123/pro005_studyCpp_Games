@@ -1,14 +1,22 @@
+# 指定CMake的最低版本要求为3.20 低于此版本的CMake无法正确处理此配置文件
 cmake_minimum_required(VERSION 3.20)
+
+# 定义项目名称为"tetris"
 project(tetris)
 
+# 设置C++标准为C++17 确保编译器使用C++17标准进行编译
 set(CMAKE_CXX_STANDARD 17)
 
-# 指定 Homebrew SFML 3 安装路径
-set(SFML_DIR "/opt/homebrew/Cellar/sfml/3.0.2/lib/cmake/SFML")
+# SFML 2.x 的 Homebrew 路径
+set(SFML_DIR "/opt/homebrew/opt/sfml@2/lib/cmake/SFML")
 
-# SFML 3.x 组件写法
-find_package(SFML 3 REQUIRED COMPONENTS sfml-graphics sfml-window sfml-system)
+# SFML 2.x 查找
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
+# 告诉编译器在 include/ 找头文件
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# 创建名为"tetris"的可执行文件，包含以下源文件
 add_executable(tetris
     src/main.cpp
     src/Board.cpp
@@ -17,4 +25,5 @@ add_executable(tetris
     src/Tetromino.cpp
 )
 
+# 将SFML的图形、窗口、系统模块链接到tetris目标
 target_link_libraries(tetris sfml-graphics sfml-window sfml-system)
