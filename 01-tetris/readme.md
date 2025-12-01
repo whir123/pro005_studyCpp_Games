@@ -4,9 +4,9 @@
 
 ##### 项目搭建：
 ```
-    # 清理 build 目录
+    # 创建 build 目录
+    mkdir build
     cd build
-    rm -rf *
 
     # 构建 产物为tetris 位于build下
     cmake ..
