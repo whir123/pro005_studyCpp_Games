@@ -6,3 +6,9 @@
 
 # CMake build 文件夹
 /build/
+
+# 编译输出文件
+*.o
+*.out
+*.exe
+*.app
