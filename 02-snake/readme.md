@@ -6,7 +6,7 @@
     mkdir build
     cd build
 
-    # 构建 产物为tetris 位于build下
+    # 构建 产物为snake 位于build下
     cmake ..
     cmake --build .
 ```
